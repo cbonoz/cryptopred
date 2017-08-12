@@ -1,0 +1,55 @@
+@media only screen and (min-width: 769px) {
+    /* For mobile phones: */
+    .howto-image {
+        margin-top: 25px;
+        max-width: 600px;
+    }
+
+    .banner-image {
+        width: 275px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+        clear: both;
+    }
+
+    .privacy {
+        padding: 50px;
+    }
+
+    .header-font {
+        font-size: 24px;
+        color: lightgrey;
+    }
+
+    .login-button {
+        font-size: 20px;
+        border-radius: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        display: inline-block;
+        margin: 0 auto;
+        text-align: center;
+        white-space: normal;
+        margin-top: 50px;
+    }
+
+    .navbar, .navbar-brand {
+        margin-bottom: 0 !important;
+        /*min-height: 70px !important;*/
+        line-height: 48px !important;
+        font-size: 16px !important;
+    }
+
+    .notification-count {
+        font-size: 20px;
+        text-align: center;
+        margin: auto;
+        color: whitesmoke;
+        padding-top: 25px;
+    }
+
+
+}
