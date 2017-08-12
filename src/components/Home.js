@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import logo from '../static/crypto_block_trans_cropped.png';
 import {Link} from 'react-router-dom';
-import { coins } from './../helpers/Coins';
+import { allCoins } from './../helpers/Coins';
 import { getRandom } from './../helpers/helper';
 import { LeaderBoard } from './LeaderBoard';
 
@@ -18,7 +18,7 @@ export default class Home extends Component {
     }
 
     selectRandomCoin() {
-        const coin = getRandom(coins);
+        const coin = getRandom(allCoins);
         this.setState({currentCoin: coin})
     }
 

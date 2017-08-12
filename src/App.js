@@ -13,10 +13,13 @@ export default class App extends Component {
 
     constructor(props, context) {
         super(props, context);
+
+
         this.state = {
             loading: true,
-            authed: true
+            authed: true,
         };
+
     }
 
     componentDidMount() {
@@ -33,7 +36,6 @@ export default class App extends Component {
                 <BrowserRouter>
                     <div className="main-content">
                         <Header authed={this.state.authed}/>
-
                         <div className="container">
                             <div className="row">
                                 <Switch>

@@ -1,5 +1,5 @@
 module.exports = {
-    coins: [{"name": "Bitcoin", "symbol": "BTC"}, {"name": "Ethereum", "symbol": "ETH"}, {
+    allCoins: [{"name": "Bitcoin", "symbol": "BTC"}, {"name": "Ethereum", "symbol": "ETH"}, {
         "name": "Bitcoin Cash",
         "symbol": "BCH"
     }, {"name": "Ripple", "symbol": "XRP"}, {"name": "Litecoin", "symbol": "LTC"}, {

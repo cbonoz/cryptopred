@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import ReactRotatingText from 'react-rotating-text';
-import logo from '../static/crypto_block_trans_cropped.png';
-import {Link} from 'react-router-dom';
-
+import {MAX_LEADERBOARD_USERS} from '../config/constants';
 
 export default class LeaderBoard extends Component {
 
@@ -10,15 +7,16 @@ export default class LeaderBoard extends Component {
         super(props, context);
         this.state = {
             leaderData: [],
-            loading: false
+            loading: false,
+            maxLeaders: MAX_LEADERBOARD_USERS
         }
     }
 
     componentWillMount() {
-        getLeaders()
+        _getLeaders()
     }
 
-    getLeaders() {
+    _getLeaders() {
         this.setState({loading: true});
         // TODO: fetch score leaders from private server.
         // load leaderData for rows of table.
