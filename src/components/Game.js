@@ -4,7 +4,8 @@ import {getRandom} from './../helpers/helper';
 import GuessChart from "./GuessChart";
 import Loading from 'react-loading-animation';
 import api from './../config/api';
-import {CORRECT_SCORE, NUM_OPTIONS} from './../config/constants';
+import {TimeSeries} from "pondjs";
+import {CORRECT_POINTS, NUM_OPTIONS} from './../config/constants';
 
 
 export default class Game extends Component {
@@ -24,7 +25,13 @@ export default class Game extends Component {
             score: 0,
             user: null
         });
-        this.state = {loading: false, currentCoin: null, coinSeries: series};
+        const coin = getRandom(allCoins);
+        this.state = {loading: false, currentCoin: coin, coinSeries: series};
+    }
+
+    componentWillMount() {
+        console.log('coin:' + JSON.stringify(this.state.currentCoin));
+        this._loadNextChart();
     }
 
     _fetchCoinHistory(duration, coin) {
@@ -33,20 +40,6 @@ export default class Game extends Component {
         self.setState({loading: true});
         const requestUrl = api.getCoinHistory(duration, coin.symbol);
         // console.log('requesting coin history: ' + requestUrl);
-
-        const durationKey = coin.symbol + '_' + duration;
-        if (self.state.historyMap.hasOwnProperty(durationKey)) {
-            const existingSeries = self.state.historyMap[durationKey];
-            // Check if there are any price points in the cache already for this coin and time duration selection.
-            if (existingSeries._collection !== undefined && existingSeries._collection._eventList.size > 0) {
-                // Set the cached state on the view.
-                // console.log('using cached series', durationKey, existingSeries._collection._eventList.size, "entries");
-                self.setState({
-                    loading: false, currentDuration: duration, series: existingSeries, noDataMessage: null
-                });
-                return;
-            }
-        }
 
         fetch(requestUrl)
             .then((resp) => resp.json()) // Transform the data into json
@@ -69,17 +62,13 @@ export default class Game extends Component {
 
                 self.setState({
                     loading: false, currentDuration: duration, series: series,
-                    noDataMessage: null, historyMap: hist, showChartDetails: true
+                    noDataMessage: null, showChartDetails: true
                 });
             })
     }
 
     _getRandomDuration() {
         return getRandom(["30day", "1day", "90day", "180day"]);
-    }
-
-    componentWillMount() {
-        this._loadNextChart();
     }
 
     _getGuessOptions(coin) {
@@ -92,7 +81,7 @@ export default class Game extends Component {
     }
 
     _loadNextChart() {
-        this._fetchCoinHistory(this._getRandomDuration(), this.state.coin)
+        this._fetchCoinHistory(this._getRandomDuration(), this.state.currentCoin)
     }
 
     selectRandomCoin() {
@@ -133,7 +122,7 @@ export default class Game extends Component {
                 <div className="center">
 
                     <Loading isLoading={this.state.loading}>
-                        <GuessChart coin={this.state.coin}
+                        <GuessChart coin={this.state.currentCoin}
                                     coinSeries={this.state.coinSeries}
                                     callback={this.guessChartCallback.bind(this)}
                                     showChartDetails={this.state.showChartDetails}/>

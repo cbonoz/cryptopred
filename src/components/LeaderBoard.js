@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {MAX_LEADERBOARD_USERS} from '../config/constants';
 
-export default class LeaderBoard extends Component {
+class LeaderBoard extends Component {
 
     constructor(props, context) {
         super(props, context);
@@ -13,7 +13,7 @@ export default class LeaderBoard extends Component {
     }
 
     componentWillMount() {
-        _getLeaders()
+        this._getLeaders()
     }
 
     _getLeaders() {
@@ -28,9 +28,11 @@ export default class LeaderBoard extends Component {
         return (
             <div className="home-content">
                 <div className="center">
+                    <h3 className="center">Leaderboard goes here</h3>
                     {/*TODO: implement leaderboard table*/}
                     {/*<Loading><Table/></Loading>*/}
                 </div>
             </div>);
     }
-};
+}
+export default LeaderBoard;

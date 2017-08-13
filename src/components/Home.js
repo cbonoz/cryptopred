@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import logo from '../static/crypto_block_trans_cropped.png';
 import {Link} from 'react-router-dom';
 import { allCoins } from './../helpers/Coins';
 import { getRandom } from './../helpers/helper';
-import { LeaderBoard } from './LeaderBoard';
-
+import LeaderBoard from "./LeaderBoard";
 
 export default class Home extends Component {
 
@@ -27,14 +25,13 @@ export default class Home extends Component {
         return (
             <div className="home-content">
                 <div className="center">
-                    <img src={logo} alt="CryptoAlarms logo" className="clear banner-image"/>
                     <span className="header-font clear">
                         Cryptocurrency price prediction game.
                     </span>
 
                     <LeaderBoard/>
 
-                    <Link role="button" to="/login" className="login-button btn-warning">Start Game</Link>
+                    <Link role="button" to="/game" className="login-button btn-warning">Start Game</Link>
 
                 </div>
             </div>);

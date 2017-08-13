@@ -3,9 +3,9 @@
  */
 import React, {Component} from 'react';
 import {NavLink} from 'react-router-dom'
-import logo from './../static/cryptoalarms_logo.png'
-import {logout} from './../helpers/auth'
-import firebase from 'firebase';
+// import logo from './../static/cryptoalarms_logo.png'
+// import {logout} from './../helpers/auth'
+// import firebase from 'firebase';
 import MenuIcon from './../static/hamburger_icon.png';
 import {WEB_WIDTH} from './../config/constants';
 
@@ -58,7 +58,7 @@ class Header extends Component {
 
     renderNavigation() {
 
-        const user = firebase.auth().currentUser;
+        const user = null;
         if (this.state.windowWidth <= WEB_WIDTH) {
             return (
                 <span className="mobile_nav">
@@ -90,7 +90,8 @@ class Header extends Component {
                     <div className="container">
                         <div className="navbar-header">
                             <NavLink activeClassName="selected" to="/" className="navbar-brand">
-                                <img src={logo} alt="Header"/>
+                                {/*<img src={logo} alt="Header"/>*/}
+                                <span>Crypto Predictions</span>
                             </NavLink>
                             {this.renderNavigation()}
 
